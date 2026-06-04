@@ -2,23 +2,19 @@
 pragma solidity ^0.8.20;
 
 contract LumaFi {
+    uint256 public total;
 
-```
-uint256 public deposits;
-
-function deposit() public {
-    deposits += 1;
-}
-
-function withdraw() public {
-    if (deposits > 0) {
-        deposits -= 1;
+    function deposit() public {
+        total += 1;
     }
-}
 
-function getDeposits() public view returns (uint256) {
-    return deposits;
-}
-```
+    function withdraw() public {
+        require(total > 0, "No balance");
 
+        total -= 1;
+    }
+
+    function getTotal() public view returns (uint256) {
+        return total;
+    }
 }
